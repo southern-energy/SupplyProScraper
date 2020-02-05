@@ -4,7 +4,7 @@
 
 I do not want to spend time skimming through portals where builders do not send us emails. We have some builders where they use the same platforms, like MarkSystems has a Dashboard we can use. But there are quite cumbersome portals that I'd rather not deal with.
 
-### Builder Portals
+### Builder Portals to Scrape
 
 #### SupplyPro
 
@@ -52,7 +52,7 @@ I do not want to spend time skimming through portals where builders do not send 
 
 1. Codify how each of these builders structure their PO's.
 2. Extract information using Python and Python Modules.
-3. Organize data into an Excel file for possible QA.
+3. Organize data into an intermediate file format for possible QA.
 4. Move the information into DASH.
 
 ## Research Notes
@@ -77,38 +77,9 @@ Other things we will need to consider and build along the way for QA Purposes:
 
 - Table of Services and Pricing for Builder
 
-### Pulte & Pulte Group
-
-1. They can export their Schedules in either XML or Excel format.
-2. Parse the Excel File for Following:
-   1. Subdivision
-   2. Lot Number
-   3. City
-3. Follow the formatting listed in the "BES Personal Procedures Reference" Google Document.
-
-### Stanley Martin
-
-1. You can right click a cell in a workspace.
-2. Click "Export All Rows to Excel"
-3. Results in a Workbook
-4. Using this process, you can do this in the "Work orders by Date" workspace and the "Lots Pending Start" to have two Excel Sheets.
-   1. One with Address, PO Number, Amounts, Service Conducted
-   2. One with "House Plans", which we can match it DASH.
+***
 
 ## Hyphen Solutions Scraper
-
-### Dependencies
-
-- selenium
-  - PIP Package Information
-    - <https://pypi.org/project/selenium/>
-  - Documentation
-    - <https://selenium-python.readthedocs.io/>
-- http_requests
-  - PIP Package Information
-    - <https://pypi.org/project/requests-html/>
-  - Documentation
-    - <https://requests-html.kennethreitz.org/>
 
 ### Steps (Milestones for Completion)
 
@@ -164,3 +135,38 @@ Other things we will need to consider and build along the way for QA Purposes:
    - Toll Brothers (Raleigh)
    - Toll Brothers (Charlotte)
    - Davidson
+
+***
+
+### Dependencies
+
+- selenium
+  - PIP Package Information
+    - <https://pypi.org/project/selenium/>
+  - Documentation
+    - <https://selenium-python.readthedocs.io/>
+- http_requests
+  - PIP Package Information
+    - <https://pypi.org/project/requests-html/>
+  - Documentation
+    - <https://requests-html.kennethreitz.org/>
+
+***
+
+### Pulte & Pulte Group Scraper
+
+1. They can export their Schedules in either XML or Excel format.
+2. Parse the Excel File for Following:
+   1. Subdivision
+   2. Lot Number
+   3. City
+3. Follow the formatting listed in the "BES Personal Procedures Reference" Google Document.
+
+### Stanley Martin Scraper
+
+1. You can right click a cell in a workspace.
+2. Click "Export All Rows to Excel"
+3. Results in a Workbook
+4. Using this process, you can do this in the "Work orders by Date" workspace and the "Lots Pending Start" to have two Excel Sheets.
+   1. One with Address, PO Number, Amounts, Service Conducted
+   2. One with "House Plans", which we can match it DASH.
