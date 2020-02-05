@@ -23,6 +23,8 @@
   - [Pulte & Pulte Group Scraper](#pulte--pulte-group-scraper)
   - [Stanley Martin Scraper](#stanley-martin-scraper)
 
+***
+
 ## Problem
 
 I do not want to spend time skimming through portals where builders do not send us emails. We have some builders where they use the same platforms, like MarkSystems has a Dashboard we can use. But there are quite cumbersome portals that I'd rather not deal with.
@@ -178,6 +180,7 @@ Other things we will need to consider and build along the way for QA Purposes:
     - chromedriver
       - Documentation
       - <https://chromedriver.chromium.org/>
+
 ***
 
 ## Pulte & Pulte Group Scraper
