@@ -163,17 +163,21 @@ Other things we will need to consider and build along the way for QA Purposes:
 
 ## Dependencies for Hyphen Solutions Scraper
 
-- selenium
-  - PIP Package Information
-    - <https://pypi.org/project/selenium/>
-  - Documentation
-    - <https://selenium-python.readthedocs.io/>
-- http_requests
-  - PIP Package Information
-    - <https://pypi.org/project/requests-html/>
-  - Documentation
-    - <https://requests-html.kennethreitz.org/>
-
+- Python Module Dependencies
+  - selenium
+    - PIP Package Information
+      - <https://pypi.org/project/selenium/>
+    - Documentation
+      - <https://selenium-python.readthedocs.io/>
+  - http_requests
+    - PIP Package Information
+      - <https://pypi.org/project/requests-html/>
+    - Documentation
+      - <https://requests-html.kennethreitz.org/>
+  - Other Packages Required
+    - chromedriver
+      - Documentation
+      - <https://chromedriver.chromium.org/>
 ***
 
 ## Pulte & Pulte Group Scraper
