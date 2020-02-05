@@ -1,5 +1,28 @@
 # Portal Scraper Suite
 
+## Table of Contents
+
+- [Portal Scraper Suite](#portal-scraper-suite)
+  - [Table of Contents](#table-of-contents)
+  - [Problem](#problem)
+    - [Builder Portals to Scrape](#builder-portals-to-scrape)
+      - [SupplyPro](#supplypro)
+      - [MarkSystems](#marksystems)
+      - [BuilderTrend](#buildertrend)
+      - [Random Portals](#random-portals)
+  - [Solution](#solution)
+  - [Research Notes](#research-notes)
+  - [Hyphen Solutions Scraper](#hyphen-solutions-scraper)
+    - [Steps (Milestones for Completion)](#steps-milestones-for-completion)
+      - [STEP 1: Login into SupplyPro ✔](#step-1-login-into-supplypro-%e2%9c%94)
+      - [STEP 2: Go to Report Criteria Section ✔](#step-2-go-to-report-criteria-section-%e2%9c%94)
+      - [STEP 3: Select Builder](#step-3-select-builder)
+      - [STEP 4: Read Contents](#step-4-read-contents)
+      - [STEP 5: Text Transformation (Data Cleaning)](#step-5-text-transformation-data-cleaning)
+  - [Dependencies for Hyphen Solutions Scraper](#dependencies-for-hyphen-solutions-scraper)
+  - [Pulte & Pulte Group Scraper](#pulte--pulte-group-scraper)
+  - [Stanley Martin Scraper](#stanley-martin-scraper)
+
 ## Problem
 
 I do not want to spend time skimming through portals where builders do not send us emails. We have some builders where they use the same platforms, like MarkSystems has a Dashboard we can use. But there are quite cumbersome portals that I'd rather not deal with.
@@ -138,7 +161,7 @@ Other things we will need to consider and build along the way for QA Purposes:
 
 ***
 
-### Dependencies for Hyphen Solutions Scraper
+## Dependencies for Hyphen Solutions Scraper
 
 - selenium
   - PIP Package Information
@@ -153,7 +176,7 @@ Other things we will need to consider and build along the way for QA Purposes:
 
 ***
 
-### Pulte & Pulte Group Scraper
+## Pulte & Pulte Group Scraper
 
 1. They can export their Schedules in either XML or Excel format.
 2. Parse the Excel File for Following:
@@ -162,7 +185,7 @@ Other things we will need to consider and build along the way for QA Purposes:
    3. City
 3. Follow the formatting listed in the "BES Personal Procedures Reference" Google Document.
 
-### Stanley Martin Scraper
+## Stanley Martin Scraper
 
 1. You can right click a cell in a workspace.
 2. Click "Export All Rows to Excel"
