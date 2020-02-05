@@ -110,9 +110,9 @@ Other things we will need to consider and build along the way for QA Purposes:
   - Documentation
     - <https://requests-html.kennethreitz.org/>
 
-### Steps
+### Steps (Milestones for Completion)
 
-#### STEP 1: Login into SupplyPro
+#### STEP 1: Login into SupplyPro ✔
 
 1. Request the Page ✔
 2. Send Login Information ✔
@@ -122,7 +122,7 @@ Other things we will need to consider and build along the way for QA Purposes:
           1. Click Forced Login Box and Resumbit ✔
           2. Passes - Go to STEP 2 ✔
 
-#### STEP 2: Go to Report Criteria Section
+#### STEP 2: Go to Report Criteria Section ✔
 
 1. Need to Capture Session ID (Anything After <https://www.hyphensolutions.com/MH2Supply/Reports/PotentialOrders.asp?sessid=>) ✔
    1. StackOverFlow Example <https://stackoverflow.com/questions/30479290/get-current-url-from-browser-using-python>
@@ -134,6 +134,14 @@ Other things we will need to consider and build along the way for QA Purposes:
 **STEP 3 must be replicated for each builder.**
 
 1. Interacts with dropdown menus to select builder. ✔
+   - Dan Ryan (SC)
+   - Dan Ryan Builders
+   - Shea Homes
+   - Dan Ryan
+   - Taylor Morrison
+   - Toll Brothers (Raleigh)
+   - Toll Brothers (Charlotte)
+   - Davidson
 2. Interacts with dropdown menus to select 60 days from today. ✔
 
 #### STEP 4: Read Contents
@@ -141,9 +149,18 @@ Other things we will need to consider and build along the way for QA Purposes:
 1. Reads if there are tasks a spread amongst multiple pages.
    1. Python script scrapes each page's contents into an array of arrays.
    2. Each pages' results are combined into a single data cluster to be exported.
+2. If there is only one page, it will read the one page.
 
 #### STEP 5: Text Transformation (Data Cleaning)
 
 **STEP 4 must be replicated for each builder.**
 
 1. The text from the result of each requires cleaning, which means PO's, Lot Numbers, and Pricing must be extracted from our soup of text. This will make importing into DASH 2.0 easier.
+   - Dan Ryan (SC)
+   - Dan Ryan Builders
+   - Shea Homes
+   - Dan Ryan
+   - Taylor Morrison
+   - Toll Brothers (Raleigh)
+   - Toll Brothers (Charlotte)
+   - Davidson
