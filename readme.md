@@ -124,7 +124,7 @@ Other things we will need to consider and build along the way for QA Purposes:
 
 #### STEP 5: Text Transformation (Data Cleaning)
 
-**STEP 4 must be replicated for each builder.**
+**STEP 5 must be replicated for each builder.**
 
 1. The text from the result of each requires cleaning, which means PO's, Lot Numbers, and Pricing must be extracted from our soup of text. This will make importing into DASH 2.0 easier.
    - Dan Ryan (SC)
@@ -138,7 +138,7 @@ Other things we will need to consider and build along the way for QA Purposes:
 
 ***
 
-### Dependencies
+### Dependencies for Hyphen Solutions Scraper
 
 - selenium
   - PIP Package Information
