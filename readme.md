@@ -14,8 +14,8 @@
   - [Research Notes](#research-notes)
   - [Hyphen Solutions Scraper](#hyphen-solutions-scraper)
     - [Steps (Milestones for Completion)](#steps-milestones-for-completion)
-      - [STEP 1: Login into SupplyPro ✔](#step-1-login-into-supplypro-%e2%9c%94)
-      - [STEP 2: Go to Report Criteria Section ✔](#step-2-go-to-report-criteria-section-%e2%9c%94)
+      - [STEP 1: Login into SupplyPro](#step-1-login-into-supplypro)
+      - [STEP 2: Go to Report Criteria Section](#step-2-go-to-report-criteria-section)
       - [STEP 3: Select Builder](#step-3-select-builder)
       - [STEP 4: Read Contents](#step-4-read-contents)
       - [STEP 5: Text Transformation (Data Cleaning)](#step-5-text-transformation-data-cleaning)
@@ -36,7 +36,7 @@ I do not want to spend time skimming through portals where builders do not send 
 - Dan Ryan (SC)
 - Dan Ryan Builders
 - Shea Homes
-- Dan Ryan
+- M.I.
 - Taylor Morrison
 - Toll Brothers (Raleigh)
 - Toll Brothers (Charlotte)
@@ -108,7 +108,7 @@ Other things we will need to consider and build along the way for QA Purposes:
 
 ### Steps (Milestones for Completion)
 
-#### STEP 1: Login into SupplyPro ✔
+#### STEP 1: Login into SupplyPro
 
 1. Request the Page ✔
 2. Send Login Information ✔
@@ -118,7 +118,7 @@ Other things we will need to consider and build along the way for QA Purposes:
           1. Click Forced Login Box and Resumbit ✔
           2. Passes - Go to STEP 2 ✔
 
-#### STEP 2: Go to Report Criteria Section ✔
+#### STEP 2: Go to Report Criteria Section
 
 1. Need to Capture Session ID (Anything After <https://www.hyphensolutions.com/MH2Supply/Reports/PotentialOrders.asp?sessid=>) ✔
    1. StackOverFlow Example <https://stackoverflow.com/questions/30479290/get-current-url-from-browser-using-python>
@@ -129,16 +129,16 @@ Other things we will need to consider and build along the way for QA Purposes:
 
 **STEP 3 must be replicated for each builder.**
 
-1. Interacts with dropdown menus to select builder. ✔
+1. Interacts with dropdown menus to select builder.
    - Dan Ryan (SC)
    - Dan Ryan Builders
    - Shea Homes
-   - Dan Ryan
+   - M.I.
    - Taylor Morrison
    - Toll Brothers (Raleigh)
    - Toll Brothers (Charlotte)
    - Davidson
-2. Interacts with dropdown menus to select 60 days from today. ✔
+2. Interacts with dropdown menus to select 60 days from today.
 
 #### STEP 4: Read Contents
 
@@ -155,7 +155,7 @@ Other things we will need to consider and build along the way for QA Purposes:
    - Dan Ryan (SC)
    - Dan Ryan Builders
    - Shea Homes
-   - Dan Ryan
+   - M.I.
    - Taylor Morrison
    - Toll Brothers (Raleigh)
    - Toll Brothers (Charlotte)
