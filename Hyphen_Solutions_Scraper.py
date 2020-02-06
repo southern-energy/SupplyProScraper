@@ -126,30 +126,7 @@ def select_dan_ryan_SC():
             browser.find_element_by_xpath('/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[1]/tbody/tr[2]/td[3]/input[3]').send_keys(Keys.RETURN)
             i += 1
 
-    # # Decomment Below Me
-    # # Approach - Iterate through Table Rows
-    # # page = session.get(browser.current_url)
-    # # doc = lh.fromstring(page.content)
-    # # print(doc)
-    # # print("Above is doc, below is tr_elements")
-    # tr_elements = browser.find_elements_by_xpath('/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[2]/tbody/tr')
-    # # tr_elements represents all 51 rows in the HTML table, with the first row being the header.
-    # i = 0
-    # for i in range(1, len(tr_elements)):
-    #     # print(i)
-    #     print(tr_elements[i].text, end='\n')
-    # # print(len(tr_elements))
-    # # Decomment Above Me
-    
-
-
 select_dan_ryan_SC()
 
-
-
-# TODO: Page Useful for progress on Approach 3: https://towardsdatascience.com/web-scraping-html-tables-with-python-c9baba21059
-# TODO: Need to read Pages if pages is present and record it. Probably will do this with the following:
-    # page_number_total_text_snippet = browser.find_element_by_xpath("/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[1]/tbody/tr[1]/td[3]/b").text
-    # page_number_total = (re.findall(r'[1-9]$',page_number_total_text_snippet))
-
+# TODO: See if there is a way that we can combine the output of the while loop that scrapes through multiple pages. If not, we can just use Standard Output during execution in Bash script.
 # TODO: When having to replicate steps, use JSON file to direct the scraper for each builder and subdivision.
