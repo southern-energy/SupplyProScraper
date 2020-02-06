@@ -103,32 +103,43 @@ def select_dan_ryan_SC():
     except:
         number_of_pages = (re.findall(r'\d$',Text_For_Counter))
         number_of_pages = int(number_of_pages[0])
+
     print(number_of_pages)
-    # Lets see if we can return the whole table to be parsed.
-    
-    # Approach 1 - Parse Table Text
 
-    # table_text = browser.find_element_by_xpath("/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[2]").text
-    # print(table_text)
+    if number_of_pages == None:
+        print("IF STATEMENT EXECUTED")
+        tr_elements = browser.find_elements_by_xpath('/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[2]/tbody/tr')
+        i = 0
+        for i in range(1, len(tr_elements)):
+            # print(i)
+            print(tr_elements[i].text, end='\n')
+    else:
+        i = 0
+        while i < number_of_pages:
+            print("ELSE STATEMENT EXECUTED")
+            print(i)
+            print(number_of_pages)
+            tr_elements = browser.find_elements_by_xpath('/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[2]/tbody/tr')
+            for i in range(1, len(tr_elements)):
+                # print(i)
+                print(tr_elements[i].text, end='\n')
+            browser.find_element_by_xpath('/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[1]/tbody/tr[2]/td[3]/input[3]').send_keys(Keys.RETURN)
+            i += 1
 
-    # Approach 2 - Parse Entire XML
-
-    # page_source_xml = browser.page_source
-    # print(page_source_xml)
-
-    # Approach 3 - Iterate through Table Rows
-    # page = session.get(browser.current_url)
-    # doc = lh.fromstring(page.content)
-    # print(doc)
-    # print("Above is doc, below is tr_elements")
-    tr_elements = browser.find_elements_by_xpath('/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[2]/tbody/tr')
-    # tr_elements represents all 51 rows in the HTML table, with the first row being the header.
-    i = 0
-    list()
-    for i in range(1, len(tr_elements)):
-        # print(i)
-        print(tr_elements[i].text, end='\n')
-    # print(len(tr_elements))
+    # # Decomment Below Me
+    # # Approach - Iterate through Table Rows
+    # # page = session.get(browser.current_url)
+    # # doc = lh.fromstring(page.content)
+    # # print(doc)
+    # # print("Above is doc, below is tr_elements")
+    # tr_elements = browser.find_elements_by_xpath('/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[2]/tbody/tr')
+    # # tr_elements represents all 51 rows in the HTML table, with the first row being the header.
+    # i = 0
+    # for i in range(1, len(tr_elements)):
+    #     # print(i)
+    #     print(tr_elements[i].text, end='\n')
+    # # print(len(tr_elements))
+    # # Decomment Above Me
     
 
 
@@ -136,9 +147,7 @@ select_dan_ryan_SC()
 
 
 
-# TODO: Okay, so we have the table now...how can we parse this effectively?
 # TODO: Page Useful for progress on Approach 3: https://towardsdatascience.com/web-scraping-html-tables-with-python-c9baba21059
-# TODO: Teach the computer how to read the rows.
 # TODO: Need to read Pages if pages is present and record it. Probably will do this with the following:
     # page_number_total_text_snippet = browser.find_element_by_xpath("/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[1]/tbody/tr[1]/td[3]/b").text
     # page_number_total = (re.findall(r'[1-9]$',page_number_total_text_snippet))
