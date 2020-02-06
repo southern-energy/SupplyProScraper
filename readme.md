@@ -142,10 +142,10 @@ Other things we will need to consider and build along the way for QA Purposes:
 
 #### STEP 4: Read Contents
 
-1. Reads if there are tasks a spread amongst multiple pages.
+1. Reads if there are tasks a spread amongst multiple pages. ✔
    1. Python script scrapes each page's contents into an array of arrays.
    2. Each pages' results are combined into a single data cluster to be exported.
-2. If there is only one page, it will read the one page.
+2. If there is only one page, it will read the one page. ✔
 
 #### STEP 5: Text Transformation (Data Cleaning)
 
