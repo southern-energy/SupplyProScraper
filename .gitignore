@@ -2,3 +2,4 @@ chromedriver.exe
 *.json
 *.txt
 /.vscode
+/.pytest_cache
