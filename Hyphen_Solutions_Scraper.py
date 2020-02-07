@@ -102,7 +102,6 @@ def select_dan_ryan_SC():
     print(number_of_pages)
 
     if number_of_pages == None:
-        print("IF STATEMENT EXECUTED")
         tr_elements = browser.find_elements_by_xpath('/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[2]/tbody/tr')
         i = 0
         for i in range(1, len(tr_elements)):
