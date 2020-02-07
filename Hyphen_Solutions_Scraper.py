@@ -111,9 +111,8 @@ def select_dan_ryan_SC():
     else:
         i = 0
         while i < number_of_pages:
-            print("ELSE STATEMENT EXECUTED")
-            print(i)
-            print(number_of_pages)
+            # print(i)
+            # print(number_of_pages)
             tr_elements = browser.find_elements_by_xpath('/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[2]/tbody/tr')
             for i in range(1, len(tr_elements)):
                 # print(i)
