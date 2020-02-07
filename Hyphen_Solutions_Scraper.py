@@ -2,11 +2,9 @@ import selenium
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.webdriver import Options
-import pandas as pd
 import requests
 import bs4
 import re
-import lxml.html as lh
 import json
 
 # Original Method when I started using Selenium
@@ -67,9 +65,6 @@ def force_login():
         return 'We did not have to force the log in.'
 
 force_login()
-
-# We Need to Retrieve the Session ID that HyphenSolutions Gives Us
-# We have successfully captured the information we needed using the requests.Session()
 
 def navigate_to_future_orders():
     # print("We are inside future orders.")
