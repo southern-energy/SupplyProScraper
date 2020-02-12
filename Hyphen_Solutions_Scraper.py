@@ -117,14 +117,13 @@ def select_dan_ryan_SC():
             for i in range(1, len(tr_elements)):
                 # print(i)
                 print(tr_elements[i].text, end='\n')
+                # print(browser.find_elements_by_tag_name('td').text)
 
             browser.find_element_by_xpath('/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[1]/tbody/tr[2]/td[3]/input[3]').send_keys(Keys.RETURN)
             j += 1
 
 select_dan_ryan_SC()
 
-# TODO: See if there is a way that we can combine the output of the while loop that scrapes through multiple pages. If not, we can just use Standard Output during execution in Bash script.
-
 #TODO: Create list variable that adds all of the elements content into a list...then we have to split up the strings. Either separating each record into an array of an arrays. Time to use recursion!
 
-# TODO: When having to replicate steps, use JSON file to direct the scraper for each builder and subdivision.
+#TODO: When having to replicate steps, use JSON file to direct the scraper for each builder and subdivision.
