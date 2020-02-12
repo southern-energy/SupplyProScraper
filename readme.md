@@ -130,7 +130,7 @@ Other things we will need to consider and build along the way for QA Purposes:
 **STEP 3 must be replicated for each builder.**
 
 1. Interacts with dropdown menus to select builder.
-   - Dan Ryan (SC)
+   - Dan Ryan (SC) ✔
    - Dan Ryan Builders
    - Shea Homes
    - M.I.
