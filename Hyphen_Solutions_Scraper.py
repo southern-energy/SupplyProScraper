@@ -124,6 +124,6 @@ def select_dan_ryan_SC():
 
 select_dan_ryan_SC()
 
-#TODO: Create list variable that adds all of the elements content into a list...then we have to split up the strings. Either separating each record into an array of an arrays. Time to use recursion!
-
 #TODO: When having to replicate steps, use JSON file to direct the scraper for each builder and subdivision.
+#TODO: Create list variable that adds all of the elements content into a list...then we have to split up the strings. Either separating each record into an array of an arrays. Time to use recursion!
+#TODO: Add str.splitlines() Method to code to create a list of contents. https://docs.python.org/3/library/stdtypes.html#str.splitlines
