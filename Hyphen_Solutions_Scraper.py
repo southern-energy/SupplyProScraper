@@ -116,7 +116,8 @@ def select_dan_ryan_SC():
             tr_elements = browser.find_elements_by_xpath('/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[2]/tbody/tr')
             for i in range(1, len(tr_elements)):
                 # print(i)
-                print(tr_elements[i].text, end='\n')
+                tr_elements_list = tr_elements[i].text.splitlines()
+                print(tr_elements_list)
                 # print(browser.find_elements_by_tag_name('td').text)
 
             browser.find_element_by_xpath('/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[1]/tbody/tr[2]/td[3]/input[3]').send_keys(Keys.RETURN)
@@ -126,4 +127,4 @@ select_dan_ryan_SC()
 
 #TODO: When having to replicate steps, use JSON file to direct the scraper for each builder and subdivision.
 #TODO: Create list variable that adds all of the elements content into a list...then we have to split up the strings. Either separating each record into an array of an arrays. Time to use recursion!
-#TODO: Add str.splitlines() Method to code to create a list of contents. https://docs.python.org/3/library/stdtypes.html#str.splitlines
+#TODO: Have str.splitlines() output be appended to a list. We will have to subdivide these individual lists further and drop some.
