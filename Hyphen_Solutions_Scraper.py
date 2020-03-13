@@ -78,11 +78,13 @@ def interact_with_future_orders_page():
 
 # ========================================
 
-def select_dan_ryan_SC():
-    browser.find_element_by_name("account_id").send_keys(Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.RETURN)
+
+# This is the version that will scrape multiple pages. We need a fix for Future Order Pages that are only one page.
+def select_dan_ryan_builders():
+    browser.find_element_by_name("account_id").send_keys(Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ARROW_DOWN,Keys.ARROW_DOWN, Keys.RETURN)
     browser.find_element_by_name("rows_per_page").send_keys(Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.RETURN)
     browser.find_element_by_xpath("/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[2]/tbody/tr[1]/th[7]/a/span/b").click()
-    Text_For_Counter = browser.find_element_by_xpath("/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[1]/tbody/tr[2]/td[3]/b").text
+    Text_For_Counter = browser.find_element_by_xpath("/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[1]/tbody/tr[1]/td[3]/b").text
     print(Text_For_Counter)
     try:
         number_of_items = (re.findall(r'^\d\d\d',Text_For_Counter))
@@ -91,7 +93,7 @@ def select_dan_ryan_SC():
         number_of_items = (re.findall(r'^\d\d',Text_For_Counter))
         number_of_items = int(number_of_items[0])
     print(number_of_items)
-    Text_For_Counter = browser.find_element_by_xpath("/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[1]/tbody/tr[2]/td[3]/b").text
+    Text_For_Counter = browser.find_element_by_xpath("/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[1]/tbody/tr[1]/td[3]/b").text
     # Variable for how many pages we need to scrape.
     try:
         number_of_pages = (re.findall(r'\d\d$',Text_For_Counter))
@@ -129,7 +131,7 @@ def select_dan_ryan_SC():
             browser.find_element_by_xpath('/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[1]/tbody/tr[2]/td[3]/input[3]').send_keys(Keys.RETURN)
             j += 1
 
-select_dan_ryan_SC()
+select_dan_ryan_builders()
 
 
 #TODO: We need to have it go down one of two paths, if it has multipe pages, do this, if not, do this.
