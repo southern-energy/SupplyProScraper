@@ -29,52 +29,56 @@ browser = webdriver.Chrome("./chromedriver.exe")
 
 session = requests.Session()
 
-def site_session_login():
-    browser.get("https://www.hyphensolutions.com/MH2SUPPLY/LogIn.asp")
-    with open('./SupplyProLoginInfo.json') as login_data:
-        data = json.load(login_data)
-    username = data['username']
-    password = data['password']
-    session.post("https://www.hyphensolutions.com/MH2SUPPLY/LogIn.asp", data = dict(user_name=username, password=password))
-site_session_login()
+def process_to_get_to_future_orders():
+    def site_session_login():
+        browser.get("https://www.hyphensolutions.com/MH2SUPPLY/LogIn.asp")
+        with open('./SupplyProLoginInfo.json') as login_data:
+            data = json.load(login_data)
+        username = data['username']
+        password = data['password']
+        session.post("https://www.hyphensolutions.com/MH2SUPPLY/LogIn.asp", data = dict(user_name=username, password=password))
+    site_session_login()
 
-def site_login():
-    browser.get("https://www.hyphensolutions.com/MH2SUPPLY/LogIn.asp")
-    with open('./SupplyProLoginInfo.json') as login_data:
-        data = json.load(login_data)
-    username = data['username']
-    password = data['password']
-    browser.find_element_by_name("user_name").send_keys(username)
-    browser.find_element_by_name("password").send_keys(password)
-    browser.find_element_by_name("cmdSubmit").click()
-site_login()
-
-
-def force_login():
-    # print(browser.current_url)
-    if browser.current_url == ("https://www.hyphensolutions.com/MH2Supply/Login.asp?user%5Fname=Builder+Services&force%5Fsignon=Y&DM1Redir=") :
-        # print(f"We have to force the login.")
+    def site_login():
+        browser.get("https://www.hyphensolutions.com/MH2SUPPLY/LogIn.asp")
         with open('./SupplyProLoginInfo.json') as login_data:
             data = json.load(login_data)
         username = data['username']
         password = data['password']
         browser.find_element_by_name("user_name").send_keys(username)
         browser.find_element_by_name("password").send_keys(password)
-        browser.find_element_by_name("force_signon").click()
         browser.find_element_by_name("cmdSubmit").click()
-    else:
-        return 'We did not have to force the log in.'
+    site_login()
 
-force_login()
 
-def navigate_to_future_orders():
-    # print("We are inside future orders.")
-    session.get("https://www.hyphensolutions.com/MH2Supply/Reports/PotentialOrders.asp?days=60&sessid=")
-    browser.get("https://www.hyphensolutions.com/MH2Supply/Reports/PotentialOrders.asp?days=60&sessid=")
-navigate_to_future_orders()
+    def force_login():
+        # print(browser.current_url)
+        if browser.current_url == ("https://www.hyphensolutions.com/MH2Supply/Login.asp?user%5Fname=Builder+Services&force%5Fsignon=Y&DM1Redir=") :
+            # print(f"We have to force the login.")
+            with open('./SupplyProLoginInfo.json') as login_data:
+                data = json.load(login_data)
+            username = data['username']
+            password = data['password']
+            browser.find_element_by_name("user_name").send_keys(username)
+            browser.find_element_by_name("password").send_keys(password)
+            browser.find_element_by_name("force_signon").click()
+            browser.find_element_by_name("cmdSubmit").click()
+        else:
+            return 'We did not have to force the log in.'
 
-def interact_with_future_orders_page():
-    browser.find_element_by_xpath("/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[1]/tbody/tr[2]/td[2]/select")
+    force_login()
+
+    def navigate_to_future_orders():
+        # print("We are inside future orders.")
+        session.get("https://www.hyphensolutions.com/MH2Supply/Reports/PotentialOrders.asp?days=60&sessid=")
+        browser.get("https://www.hyphensolutions.com/MH2Supply/Reports/PotentialOrders.asp?days=60&sessid=")
+    navigate_to_future_orders()
+
+    def interact_with_future_orders_page():
+        browser.find_element_by_xpath("/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[1]/tbody/tr[2]/td[2]/select")
+    interact_with_future_orders_page()
+
+process_to_get_to_future_orders()
 
 # ========================================
 
@@ -130,12 +134,12 @@ def select_dan_ryan_builders():
 
             browser.find_element_by_xpath('/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[1]/tbody/tr[2]/td[3]/input[3]').send_keys(Keys.RETURN)
             j += 1
+        else:
+            def return_to_future_orders_base():
+                browser.get("https://www.hyphensolutions.com/MH2Supply/Reports/PotentialOrders.asp?sessid=")
+            return_to_future_orders_base()
 
 select_dan_ryan_builders()
 
 
-#TODO: We need to have it go down one of two paths, if it has multipe pages, do this, if not, do this.
-
-#TODO: When having to replicate steps, use JSON file to direct the scraper for each builder and subdivision.
-#TODO: Create list variable that adds all of the elements content into a list...then we have to split up the strings. Either separating each record into an array of an arrays. Time to use recursion!
-#TODO: Have str.splitlines() output be appended to a list. We will have to subdivide these individual lists further and drop some.
+#TODO: We need to have it go down one of two paths, if it has multipe pages, do this, if not, do this. We already have the multiple pages part figured out.
