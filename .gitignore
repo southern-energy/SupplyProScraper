@@ -3,3 +3,4 @@ chromedriver.exe
 *.txt
 /.vscode
 /.pytest_cache
+test.py
