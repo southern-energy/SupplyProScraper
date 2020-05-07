@@ -176,8 +176,9 @@ Other things we will need to consider and build along the way for QA Purposes:
       - <https://pypi.org/project/requests-html/>
     - Documentation
       - <https://requests-html.kennethreitz.org/>
-  - Other Packages Required
+  - Other Software Required
     - chromedriver
+      - Please note that chromedriver will need to be updated when Google Chrome receives an update.
       - Documentation
       - <https://chromedriver.chromium.org/>
 
