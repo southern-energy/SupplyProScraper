@@ -84,9 +84,13 @@ process_to_get_to_future_orders()
 
 #TODO: We need to have a way to check which of the two functions we need to implement on any given page.
 
-def page_or_no_page_checker():
-    print("We are inside the page checker function.")
-page_or_no_page_checker()
+# def page_or_no_page_checker():
+#     print("We are inside the page checker function.")
+#     if browser.find_element_by_xpath("/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[1]/tbody/tr[1]/td[3]/b") == True:
+#         print("The page element exists")
+#     else: 
+#         print("We are working with a one-pager.")
+# page_or_no_page_checker()
 
 # This is the version that will scrape multiple pages. We need a fix for Future Order Pages that are only one page.
 def select_dan_ryan_builders():
@@ -144,67 +148,44 @@ def select_dan_ryan_builders():
                 browser.get("https://www.hyphensolutions.com/MH2Supply/Reports/PotentialOrders.asp?sessid=")
             return_to_future_orders_base()
 
-select_dan_ryan_builders()
+# select_dan_ryan_builders()
 
 # ==============================
-
-#TODO: We need to clean up lines 151-206 to be able to skim through only one page. Which should be a little bit easier.
 
 def select_dan_ryan_south_carolina():
     browser.find_element_by_name("account_id").send_keys(Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.RETURN)
     browser.find_element_by_name("rows_per_page").send_keys(Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.RETURN)
     browser.find_element_by_xpath("/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[2]/tbody/tr[1]/th[7]/a/span/b").click()
-    Text_For_Counter = browser.find_element_by_xpath("/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[1]/tbody/tr[1]/td[3]/b").text
+    Text_For_Counter = browser.find_element_by_xpath("/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[1]/tbody/tr[2]/td[3]/b").text
     print(Text_For_Counter)
+    # Variable for how many items we need to scrape.
     try:
-        number_of_items = (re.findall(r'^\d\d\d',Text_For_Counter))
-        number_of_items = int(number_of_items[0])
-    except:
         number_of_items = (re.findall(r'^\d\d',Text_For_Counter))
         number_of_items = int(number_of_items[0])
-    print(number_of_items)
-    Text_For_Counter = browser.find_element_by_xpath("/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[1]/tbody/tr[1]/td[3]/b").text
-    # Variable for how many pages we need to scrape.
-    try:
-        number_of_pages = (re.findall(r'\d\d$',Text_For_Counter))
-        number_of_pages = int(number_of_pages[0])
     except:
-        number_of_pages = (re.findall(r'\d$',Text_For_Counter))
-        number_of_pages = int(number_of_pages[0])
+        number_of_items = (re.findall(r'^\d',Text_For_Counter))
+        number_of_items = int(number_of_items[0])
+        
+    print("Number of Items " + str(number_of_items))
 
-    print(number_of_pages)
-
-    if number_of_pages == None:
+    if number_of_items != None:
         tr_elements = browser.find_elements_by_xpath('/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[2]/tbody/tr')
-        i = 0
+        print("Printing Length")
+        print(len(tr_elements))
         for i in range(1, len(tr_elements)):
             # print(i)
-            print(tr_elements[i].text, end='\n')
-    else:
-        j = 0
-        i = 0
-        while j < number_of_pages:
-            # print(i)
-            # print(number_of_pages)
-            tr_elements = browser.find_elements_by_xpath('/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[2]/tbody/tr')
-            for i in range(1, len(tr_elements)):
-                # print(i)
-                tr_elements_list = tr_elements[i].text.splitlines()
-                print(tr_elements_list)
-                text_manipulated_snippets = np.array(tr_elements_list)
-                print(text_manipulated_snippets)
-                # for text_snippets in tr_elements_list:
-                #     text_manipulated_snippets.extend(tr_elements_list[i][1])
+            tr_elements_list = tr_elements[i].text.splitlines()
+            # print(tr_elements_list)
+            text_manipulated_snippets = np.array(tr_elements_list)
+            print(text_manipulated_snippets)
+            # for text_snippets in tr_elements_list:
+            #     text_manipulated_snippets.extend(tr_elements_list[i][1])
 
-                # print(browser.find_elements_by_tag_name('td').text)
-
-            browser.find_element_by_xpath('/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[1]/tbody/tr[2]/td[3]/input[3]').send_keys(Keys.RETURN)
-            j += 1
-        else:
-            def return_to_future_orders_base():
-                browser.get("https://www.hyphensolutions.com/MH2Supply/Reports/PotentialOrders.asp?sessid=")
-            return_to_future_orders_base()
+            # print(browser.find_elements_by_tag_name('td').text)
+        # def return_to_future_orders_base():
+        #     browser.get("https://www.hyphensolutions.com/MH2Supply/Reports/PotentialOrders.asp?sessid=")
+        # return_to_future_orders_base()
 
 select_dan_ryan_south_carolina()
 
-#TODO: We need to have it go down one of two paths, if it has multipe pages, do this, if not, do this. We already have the multiple pages part figured out.
+#TODO: Multi-portion scraper figured, single portion scraper figured. Now we need to to make the condition on which either of these will be executed.
