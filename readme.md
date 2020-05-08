@@ -131,7 +131,7 @@ Other things we will need to consider and build along the way for QA Purposes:
 
 1. Interacts with dropdown menus to select builder.
    - Dan Ryan (SC) ✔
-   - Dan Ryan Builders
+   - Dan Ryan Builders ✔
    - Shea Homes
    - M.I.
    - Taylor Morrison
