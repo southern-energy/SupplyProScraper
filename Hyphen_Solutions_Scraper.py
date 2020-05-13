@@ -126,6 +126,7 @@ def select_dan_ryan_builders():
     else:
         j = 0
         i = 0
+        large_numpy_array = np.array([])
         while j < number_of_pages:
             # print(i)
             # print(number_of_pages)
@@ -136,6 +137,7 @@ def select_dan_ryan_builders():
                 print(tr_elements_list)
                 text_manipulated_snippets = np.array(tr_elements_list)
                 print(text_manipulated_snippets)
+                large_numpy_array = np.append(large_numpy_array, tr_elements_list)
                 # for text_snippets in tr_elements_list:
                 #     text_manipulated_snippets.extend(tr_elements_list[i][1])
 
@@ -144,6 +146,10 @@ def select_dan_ryan_builders():
             browser.find_element_by_xpath('/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[1]/tbody/tr[2]/td[3]/input[3]').send_keys(Keys.RETURN)
             j += 1
         else:
+            def export_numpy_array():
+                print("We are inside the export function.")
+                print(large_numpy_array)
+            export_numpy_array()
             def return_to_future_orders_base():
                 browser.get("https://www.hyphensolutions.com/MH2Supply/Reports/PotentialOrders.asp?sessid=")
             return_to_future_orders_base()
@@ -172,12 +178,14 @@ def select_dan_ryan_south_carolina():
         tr_elements = browser.find_elements_by_xpath('/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[2]/tbody/tr')
         print("Printing Length")
         print(len(tr_elements))
+        elements_numpy_array = np.array([])
         for i in range(1, len(tr_elements)):
             # print(i)
             tr_elements_list = tr_elements[i].text.splitlines()
             # print(tr_elements_list)
             text_manipulated_snippets = np.array(tr_elements_list)
             print(text_manipulated_snippets)
+            elements_numpy_array = np.append(elements_numpy_array, tr_elements_list)
             # for text_snippets in tr_elements_list:
             #     text_manipulated_snippets.extend(tr_elements_list[i][1])
 
@@ -185,6 +193,11 @@ def select_dan_ryan_south_carolina():
         # def return_to_future_orders_base():
         #     browser.get("https://www.hyphensolutions.com/MH2Supply/Reports/PotentialOrders.asp?sessid=")
         # return_to_future_orders_base()
+        def export_numpy_array():
+            print("We are inside the export function.")
+            print(elements_numpy_array)
+        export_numpy_array()
+
 
 select_dan_ryan_south_carolina()
 
