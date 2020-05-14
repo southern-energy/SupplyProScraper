@@ -73,7 +73,10 @@ def process_to_get_to_future_orders():
         # print("We are inside future orders.")
         session.get("https://www.hyphensolutions.com/MH2Supply/Reports/PotentialOrders.asp?days=60&sessid=")
         browser.get("https://www.hyphensolutions.com/MH2Supply/Reports/PotentialOrders.asp?days=60&sessid=")
-    navigate_to_future_orders()
+    try: 
+        navigate_to_future_orders()
+    except:
+        navigate_to_future_orders()
 
     def interact_with_future_orders_page():
         browser.find_element_by_xpath("/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[1]/tbody/tr[2]/td[2]/select")
