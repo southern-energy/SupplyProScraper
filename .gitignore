@@ -4,3 +4,4 @@ chromedriver.exe
 /.vscode
 /.pytest_cache
 test.py
+*.xlsx
