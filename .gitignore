@@ -5,3 +5,4 @@ chromedriver.exe
 /.pytest_cache
 test.py
 *.xlsx
+*.log
