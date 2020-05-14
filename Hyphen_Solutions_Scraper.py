@@ -7,6 +7,7 @@ import bs4
 import re
 import json
 import numpy as np
+import pandas as pd
 
 # Original Method when I started using Selenium
 # print("Real Browser Launching")
@@ -126,33 +127,25 @@ def select_dan_ryan_builders():
     else:
         j = 0
         i = 0
-        large_numpy_array = np.array([])
+        large_dataframe = pd.DataFrame()
         while j < number_of_pages:
             # print(i)
             # print(number_of_pages)
-            tr_elements = browser.find_elements_by_xpath('/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[2]/tbody/tr')
-            for i in range(1, len(tr_elements)):
-                # print(i)
-                tr_elements_list = tr_elements[i].text.splitlines()
-                print(tr_elements_list)
-                text_manipulated_snippets = np.array(tr_elements_list)
-                print(text_manipulated_snippets)
-                large_numpy_array = np.append(large_numpy_array, tr_elements_list)
-                # for text_snippets in tr_elements_list:
-                #     text_manipulated_snippets.extend(tr_elements_list[i][1])
+            html_table = browser.find_element_by_xpath('/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[2]').get_attribute('outerHTML')
 
-                # print(browser.find_elements_by_tag_name('td').text)
+            large_dataframe = large_dataframe.append(pd.read_html(html_table, header=0), ignore_index=True)
 
             browser.find_element_by_xpath('/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[1]/tbody/tr[2]/td[3]/input[3]').send_keys(Keys.RETURN)
             j += 1
         else:
-            def export_numpy_array():
+            def export_large_dataframe():
                 print("We are inside the export function.")
-                print(large_numpy_array)
-            export_numpy_array()
-            def return_to_future_orders_base():
-                browser.get("https://www.hyphensolutions.com/MH2Supply/Reports/PotentialOrders.asp?sessid=")
-            return_to_future_orders_base()
+                print(large_dataframe)
+                large_dataframe.to_excel("SupplyProScraperMultipage.xlsx")
+            export_large_dataframe()
+            # def return_to_future_orders_base():
+            #     browser.get("https://www.hyphensolutions.com/MH2Supply/Reports/PotentialOrders.asp?sessid=")
+            # return_to_future_orders_base()
 
 # select_dan_ryan_builders()
 
@@ -175,30 +168,70 @@ def select_dan_ryan_south_carolina():
     print("Number of Items " + str(number_of_items))
 
     if number_of_items != None:
+        html_table = browser.find_element_by_xpath('/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[2]').get_attribute('outerHTML')
+        
+        # print(html_table)
+
+        pd.read_html(html_table, header=0)
+        print(pd.read_html(html_table, header=0))
+
+
+# select_dan_ryan_south_carolina()
+
+
+# ===============================
+
+def select_all():
+    browser.find_element_by_name("account_id").send_keys(Keys.RETURN)
+    browser.find_element_by_name("rows_per_page").send_keys(Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.RETURN)
+    browser.find_element_by_xpath("/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[2]/tbody/tr[1]/th[7]/a/span/b").click()
+    Text_For_Counter = browser.find_element_by_xpath("/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[1]/tbody/tr[1]/td[3]/b").text
+    print(Text_For_Counter)
+    try:
+        number_of_items = (re.findall(r'^\d\d\d',Text_For_Counter))
+        number_of_items = int(number_of_items[0])
+    except:
+        number_of_items = (re.findall(r'^\d\d',Text_For_Counter))
+        number_of_items = int(number_of_items[0])
+    print(number_of_items)
+    Text_For_Counter = browser.find_element_by_xpath("/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[1]/tbody/tr[1]/td[3]/b").text
+    # Variable for how many pages we need to scrape.
+    try:
+        number_of_pages = (re.findall(r'\d\d$',Text_For_Counter))
+        number_of_pages = int(number_of_pages[0])
+    except:
+        number_of_pages = (re.findall(r'\d$',Text_For_Counter))
+        number_of_pages = int(number_of_pages[0])
+
+    print(number_of_pages)
+
+    if number_of_pages == None:
         tr_elements = browser.find_elements_by_xpath('/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[2]/tbody/tr')
-        print("Printing Length")
-        print(len(tr_elements))
-        elements_numpy_array = np.array([])
+        i = 0
         for i in range(1, len(tr_elements)):
             # print(i)
-            tr_elements_list = tr_elements[i].text.splitlines()
-            # print(tr_elements_list)
-            text_manipulated_snippets = np.array(tr_elements_list)
-            print(text_manipulated_snippets)
-            elements_numpy_array = np.append(elements_numpy_array, tr_elements_list)
-            # for text_snippets in tr_elements_list:
-            #     text_manipulated_snippets.extend(tr_elements_list[i][1])
+            print(tr_elements[i].text, end='\n')
+    else:
+        j = 0
+        i = 0
+        large_dataframe = pd.DataFrame()
+        while j < number_of_pages:
+            # print(i)
+            # print(number_of_pages)
+            html_table = browser.find_element_by_xpath('/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[2]').get_attribute('outerHTML')
 
-            # print(browser.find_elements_by_tag_name('td').text)
-        # def return_to_future_orders_base():
-        #     browser.get("https://www.hyphensolutions.com/MH2Supply/Reports/PotentialOrders.asp?sessid=")
-        # return_to_future_orders_base()
-        def export_numpy_array():
-            print("We are inside the export function.")
-            print(elements_numpy_array)
-        export_numpy_array()
+            large_dataframe = large_dataframe.append(pd.read_html(html_table, header=0), ignore_index=True)
 
+            browser.find_element_by_xpath('/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[1]/tbody/tr[2]/td[3]/input[3]').send_keys(Keys.RETURN)
+            j += 1
+        else:
+            def export_large_dataframe():
+                print("We are inside the export function.")
+                print(large_dataframe)
+                large_dataframe.to_excel("SupplyProScraperMultipage.xlsx", index=False)
+            export_large_dataframe()
+            # def return_to_future_orders_base():
+            #     browser.get("https://www.hyphensolutions.com/MH2Supply/Reports/PotentialOrders.asp?sessid=")
+            # return_to_future_orders_base()
 
-select_dan_ryan_south_carolina()
-
-#TODO: Multi-portion scraper figured, single portion scraper figured. Now we need to to make the condition on which either of these will be executed.
+select_all()
