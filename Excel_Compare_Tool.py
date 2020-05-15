@@ -1,11 +1,16 @@
 import numpy as np
 import pandas as pd
 
-old_excel_dataframe = pd.read_excel("OldSupplyProOutput.xlsx", sheetname=0, index_col=0, dtype=str)
+
+previous_excel_sheet = str("OldSupplyProOutput.xlsx")
+
+todays_excel_sheet = str("05-15-2020_Scraper_Output.xlsx")
+
+old_excel_dataframe = pd.read_excel(previous_excel_sheet, sheetname=0, index_col=0, dtype=str)
 
 print(old_excel_dataframe)
 
-new_excel_dataframe = pd.read_excel("NewSupplyProOutput.xlsx", sheetname=0, index_col=0, dtype=str)
+new_excel_dataframe = pd.read_excel(todays_excel_sheet, sheetname=0, index_col=0, dtype=str)
 
 large_dataframe = old_excel_dataframe.append(new_excel_dataframe)
 
