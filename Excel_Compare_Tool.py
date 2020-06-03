@@ -6,11 +6,11 @@ previous_excel_sheet = str("2020-5-26-11_SPS_All_Builder_Tasks.xlsx")
 
 todays_excel_sheet = str("2020-06-03-18_SPS_All_Builder_Tasks.xlsx")
 
-old_excel_dataframe = pd.read_excel(previous_excel_sheet, sheetname=0, index_col=0, dtype=str)
+old_excel_dataframe = pd.read_excel(previous_excel_sheet, sheet_name=0, index_col=0, dtype=str)
 
 print(old_excel_dataframe)
 
-new_excel_dataframe = pd.read_excel(todays_excel_sheet, sheetname=0, index_col=0, dtype=str)
+new_excel_dataframe = pd.read_excel(todays_excel_sheet, sheet_name=0, index_col=0, dtype=str)
 
 large_dataframe = old_excel_dataframe.append(new_excel_dataframe)
 
