@@ -138,7 +138,7 @@ Other things we will need to consider and build along the way for QA Purposes:
    - Toll Brothers (Raleigh) ✔
    - Toll Brothers (Charlotte) ✔
    - Davidson ✔
-2. Interacts with dropdown menus to select 60 days from today. ✔
+2. Interacts with dropdown menus to select 30 days from today. ✔
 
 #### STEP 4: Read Contents
 
@@ -178,7 +178,7 @@ Other things we will need to consider and build along the way for QA Purposes:
       - <https://requests-html.kennethreitz.org/>
   - Other Software Required
     - chromedriver
-      - Please note that chromedriver will need to be updated when Google Chrome receives an update.
+      - *Please note that chromedriver will need to be updated when Google Chrome receives an update.*
       - Documentation
       - <https://chromedriver.chromium.org/>
 
