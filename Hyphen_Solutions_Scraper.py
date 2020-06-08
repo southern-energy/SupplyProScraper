@@ -72,8 +72,8 @@ def process_to_get_to_future_orders():
 
     def navigate_to_future_orders():
         # print("We are inside future orders.")
-        session.get("https://www.hyphensolutions.com/MH2Supply/Reports/PotentialOrders.asp?days=60&sessid=")
-        browser.get("https://www.hyphensolutions.com/MH2Supply/Reports/PotentialOrders.asp?days=60&sessid=")
+        session.get("https://www.hyphensolutions.com/MH2Supply/Reports/PotentialOrders.asp?days=30&sessid=")
+        browser.get("https://www.hyphensolutions.com/MH2Supply/Reports/PotentialOrders.asp?days=30&sessid=")
     try: 
         navigate_to_future_orders()
     except:
