@@ -2,6 +2,7 @@ import selenium
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.webdriver import Options
+from webdriver_manager.chrome import ChromeDriverManager
 import requests
 import bs4
 import re
@@ -12,7 +13,7 @@ from datetime import datetime
 
 # Original Method when I started using Selenium
 # print("Real Browser Launching")
-browser = webdriver.Chrome("./chromedriver.exe")
+browser = webdriver.Chrome(ChromeDriverManager().install())
 # print("Real Browser has Launched")
 
 
