@@ -11,22 +11,26 @@ import numpy as np
 import pandas as pd
 from datetime import datetime
 
-# Original Method when I started using Selenium
+"""
+This was the original method I was using when developing this script, please run this if you are curious of what is happening under the hood of Selenium or you need to troubleshoot any issues.
+"""
 # print("Real Browser Launching")
-browser = webdriver.Chrome(ChromeDriverManager().install())
+# browser = webdriver.Chrome(ChromeDriverManager().install())
 # print("Real Browser has Launched")
 
-
-# print("Headless Browser Running")
-# options = Options()
-# options.add_argument("--headless") # Runs Chrome in headless mode.
-# options.add_argument('--no-sandbox') # Bypass OS security model
-# options.add_argument('--disable-gpu')  # applicable to windows os only
-# options.add_argument('start-maximized') # 
-# options.add_argument('disable-infobars')
-# options.add_argument("--disable-extensions")
-# browser = webdriver.Chrome(chrome_options=options, executable_path=r'./chromedriver.exe')
-# print("Headless Browser has Launched")
+"""
+The Headless browsing option greatly reduces the amount of time it takes for the scraper to run.
+"""
+print("Headless Browser Running")
+options = Options()
+options.add_argument("--headless") # Runs Chrome in headless mode.
+options.add_argument('--no-sandbox') # Bypass OS security model
+options.add_argument('--disable-gpu')  # applicable to windows os only
+options.add_argument('start-maximized') # 
+options.add_argument('disable-infobars')
+options.add_argument("--disable-extensions")
+browser = webdriver.Chrome(chrome_options=options, executable_path=ChromeDriverManager().install())
+print("Headless Browser has Launched")
 
 # Creating Session
 
