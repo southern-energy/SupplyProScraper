@@ -177,8 +177,7 @@ Other things we will need to consider and build along the way for QA Purposes:
     - Documentation
       - <https://requests-html.kennethreitz.org/>
   - Other Software Required
-    - chromedriver
-      - *Please note that chromedriver will need to be updated when Google Chrome receives an update.*
+    - chromedriver with ChromeDriver Manager
       - Documentation
       - <https://chromedriver.chromium.org/>
 
