@@ -162,6 +162,6 @@ def select_all():
 # 7. Put all that stuff into a table
 # 8. Put that into a History/Archive CSV so we can compare the two sets.
 
-def select_all_jobs():
+def select_pricing():
     print("We're inside the function")
-select_all_jobs()
+select_pricing()
