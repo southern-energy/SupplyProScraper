@@ -145,10 +145,10 @@ def select_all():
 
                 now = str(str(datetime.today().strftime('%Y-%m-%d'))+"-"+str(datetime.now().hour))
 
-                large_dataframe.to_excel(str(now) +"_SPS_All_Builder_Tasks.xlsx", index=False)
+                large_dataframe.to_csv(str(now) +"_SPS_All_Builder_Tasks.csv")
             export_large_dataframe()
 
-# select_all()
+select_all()
 
 # TODO:
 # 1. Grab HTML TABLE
@@ -164,4 +164,4 @@ def select_all():
 
 def select_pricing():
     print("We're inside the function")
-select_pricing()
+# select_pricing()
