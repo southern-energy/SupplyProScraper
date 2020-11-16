@@ -14,23 +14,23 @@ from datetime import datetime
 """
 This was the original method I was using when developing this script, please run this if you are curious of what is happening under the hood of Selenium or you need to troubleshoot any issues.
 """
-# print("Real Browser Launching")
-# browser = webdriver.Chrome(ChromeDriverManager().install())
-# print("Real Browser has Launched")
+print("Real Browser Launching")
+browser = webdriver.Chrome(ChromeDriverManager().install())
+print("Real Browser has Launched")
 
 """
 The Headless browsing option greatly reduces the amount of time it takes for the scraper to run.
 """
-print("Headless Browser Running")
-options = Options()
-options.add_argument("--headless") # Runs Chrome in headless mode.
-options.add_argument('--no-sandbox') # Bypass OS security model
-options.add_argument('--disable-gpu')  # applicable to windows os only
-options.add_argument('start-maximized') # 
-options.add_argument('disable-infobars')
-options.add_argument("--disable-extensions")
-browser = webdriver.Chrome(chrome_options=options, executable_path=ChromeDriverManager().install())
-print("Headless Browser has Launched")
+# print("Headless Browser Running")
+# options = Options()
+# options.add_argument("--headless") # Runs Chrome in headless mode.
+# options.add_argument('--no-sandbox') # Bypass OS security model
+# options.add_argument('--disable-gpu')  # applicable to windows os only
+# options.add_argument('start-maximized') # 
+# options.add_argument('disable-infobars')
+# options.add_argument("--disable-extensions")
+# browser = webdriver.Chrome(chrome_options=options, executable_path=ChromeDriverManager().install())
+# print("Headless Browser has Launched")
 
 # Creating Session
 
@@ -80,9 +80,9 @@ def process_to_get_to_future_orders():
         session.get("https://www.hyphensolutions.com/MH2Supply/Reports/PotentialOrders.asp?days="+str(days_from_today)+"&sessid=")
         browser.get("https://www.hyphensolutions.com/MH2Supply/Reports/PotentialOrders.asp?days="+str(days_from_today)+"&sessid=")
     try: 
-        navigate_to_future_orders(45)
+        navigate_to_future_orders(60)
     except:
-        navigate_to_future_orders(45)
+        navigate_to_future_orders(60)
 
     def interact_with_future_orders_page():
         browser.find_element_by_xpath("/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[1]/tbody/tr[2]/td[2]/select")
@@ -195,15 +195,6 @@ def select_all():
     browser.find_element_by_name("rows_per_page").send_keys(Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.RETURN)
     browser.find_element_by_xpath("/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[2]/tbody/tr[1]/th[7]/a/span/b").click()
     Text_For_Counter = browser.find_element_by_xpath("/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[1]/tbody/tr[1]/td[3]/b").text
-    print(Text_For_Counter)
-    try:
-        number_of_items = (re.findall(r'^\d\d\d',Text_For_Counter))
-        number_of_items = int(number_of_items[0])
-    except:
-        number_of_items = (re.findall(r'^\d\d',Text_For_Counter))
-        number_of_items = int(number_of_items[0])
-    print(number_of_items)
-    Text_For_Counter = browser.find_element_by_xpath("/html/body/table[4]/tbody/tr/td[2]/table[2]/tbody/tr/td[2]/form/table[1]/tbody/tr[1]/td[3]/b").text
     # Variable for how many pages we need to scrape.
     try:
         number_of_pages = (re.findall(r'\d\d$',Text_For_Counter))
@@ -236,15 +227,13 @@ def select_all():
         else:
             def export_large_dataframe():
                 print("We are inside the export function.")
-                print(large_dataframe)
+                # Here we are dropping unnecessary columns.
+                edited_dataframe = large_dataframe.drop(['Unnamed: 0', 'Task Start Date', 'Job Start Date'], axis=1)
                 print("Current Month, Date & Time:" + str(datetime.now().month)+"-"+str(datetime.now().day)+str(datetime.now().hour))
 
                 now = str(str(datetime.today().strftime('%Y-%m-%d'))+"-"+str(datetime.now().hour))
 
-                large_dataframe.to_excel(str(now) +"_SPS_All_Builder_Tasks.xlsx", index=False)
+                edited_dataframe.to_excel(str(now) +"_SPS_All_Builder_Tasks.xlsx", index=False)
             export_large_dataframe()
-            # def return_to_future_orders_base():
-            #     browser.get("https://www.hyphensolutions.com/MH2Supply/Reports/PotentialOrders.asp?sessid=")
-            # return_to_future_orders_base()
 
 select_all()
